@@ -59,7 +59,7 @@ public class ClientService {
             }
             if(client.getEmail().isEmpty() || client.getName().isEmpty() || validateEmail(client.getEmail())){
                 logger.error("Bad request: {}", client.getEmail());
-                return ResponseHandler.generateResponse("Error getting data", HttpStatus.BAD_REQUEST, client);
+                return ResponseHandler.generateResponse("Invalid request data", HttpStatus.BAD_REQUEST, client);
             }
             generateAndSetApiKey(client);
             return ResponseHandler.generateResponse("New client created", HttpStatus.CREATED, clientRepository.save(client));
